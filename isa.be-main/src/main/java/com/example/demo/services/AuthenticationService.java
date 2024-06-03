@@ -49,7 +49,7 @@ public class AuthenticationService {
         );
 
         var authenticatedUser = userRepository.findByEmail(model.getEmail())
-                .orElseThrow(() -> new UsernameNotFoundException("User with email " + model.getEmail() + " not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User with email " + model.getEmail() + " not found!"));
 
         String jwtToken = jwtService.generateToken(authenticatedUser);
         String refreshToken = jwtService.generateRefreshToken(authenticatedUser);
