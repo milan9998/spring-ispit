@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.exceptions.BaseException;
 import com.example.demo.mappers.ProductMapper;
 import com.example.demo.models.ProductModel;
 import com.example.demo.repositories.IProductRepository;
@@ -23,5 +24,18 @@ public class ProductService implements IProductService {
 
 
         return ProductMapper.toModel(savedProduct);
+    }
+
+    @Override
+    public ProductModel update(ProductModel productModel) {
+        var entity = ProductMapper.toEntity(productModel);
+        try{
+            var result = productRepository.save(entity);
+            return ProductMapper.toModel(result);
+        }catch (BaseException e){
+            throw new BaseException(e.getMessage());
+        }
+
+
     }
 }

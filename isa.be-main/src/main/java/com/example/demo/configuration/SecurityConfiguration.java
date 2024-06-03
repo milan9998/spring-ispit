@@ -31,7 +31,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/auth/**")
                 .permitAll()
-                .requestMatchers("/user/get-user-products-list").hasAnyRole(RoleConstants.EMPLOYEE)
+                .requestMatchers("/user/get-user-products-list").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

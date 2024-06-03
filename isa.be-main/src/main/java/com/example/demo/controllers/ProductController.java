@@ -39,4 +39,13 @@ public class ProductController {
     public ResponseEntity<?> create(@RequestBody @Valid ProductModel productModel, BindingResult result) {
         return ResponseEntity.ok(productService.create(productModel));
     }
+
+    @PutMapping("update-product")
+    public ResponseEntity<?> delete(@RequestBody @Valid ProductModel productModel, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return new ResponseEntity<>("Not updated!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return ResponseEntity.ok(productService.update(productModel));
+    }
 }
