@@ -9,6 +9,8 @@ import com.example.demo.repositories.IUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProductService implements IProductService {
@@ -38,4 +40,9 @@ public class ProductService implements IProductService {
 
 
     }
+
+
+  /*  public List<ProductModel> findAll(ProductModel productModel) {
+        return ProductMapper.toModelList(productRepository.findAll());
+    }*/
 }
