@@ -42,7 +42,7 @@ public class SecurityConfiguration {
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+                .cors().configurationSource(corsConfigurationSource());
         return http.build();
     }
 
@@ -50,7 +50,7 @@ public class SecurityConfiguration {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
-        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
+        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"));
         configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(Arrays.asList(
                 "Accept", "Origin", "Content-Type", "Depth", "User-Agent", "If-Modified-Since,",
